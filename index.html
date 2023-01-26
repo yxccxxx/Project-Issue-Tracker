@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./my-icons-collection/font/flaticon.css">
+  <link rel="icon" href="./img/icon.png"/>
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Users can log in to local service or to firebase."/>
+  <link rel="manifest" href="./manifest.json">
+  <title>Login</title>
+  <style>
+@font-face {
+	font-family: 'GeosansLight';
+	src: url('./font/GeosansLight/GeosansLight.eot');
+    src: local('GeosansLight'), 
+    url('./font/GeosansLight/GeosansLight.woff') format('woff'), 
+    url('./font/GeosansLight.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'CoconLight';
+	src: url('./font/CoconLight/CoconLight.eot');
+    src: local('CoconLight'), url('./font/CoconLight/CoconLight.woff') 
+    format('woff'), url('./font/CoconLight.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'gothic';
+    src: url('./font/gothic/gothic.eot');
+    src: local('gothic'), url('./font/gothic/gothic.woff') format('woff'), 
+  url('./font/gothic.ttf') format('truetype');
+}
+
+body {
+    background-color: powderblue;
+    font-family: 'GeosansLight';    
+    font-size: 15pt; 
+    padding: 30px 100px;
+    text-align: center;
+    position: static;
+}
+
+a{
+  color: black;
+}
+
+h1{
+    font-size: 36pt;
+    font-family: 'CoconLight';
+    text-align: center;
+}
+
+form{
+    display: inline;
+    margin: 0px;
+    padding: 0px;
+}
+
+input{
+    text-align: left;
+    width: auto;
+    height: auto;
+    font-family: 'GeosansLight';
+    font-size: 15pt;
+}
+
+input[type=submit], input[type=button], button {
+    background: #FFF8DC;
+    color: black;
+    font-family: 'CoconLight';
+    text-align: center;
+    font-size: 15pt;
+    width: auto;
+    height: auto;
+}
+
+#switch_btn {
+    background-color: Transparent;
+    border-color: Transparent;
+    border-style: None;
+    color: #F18BFC;
+}
+
+a{
+    color: black;
+}
+
+@media only screen and (max-width: 760px)  {
+    body {
+        text-align: center;
+        margin: 20px;
+        padding: 0px;
+    }
+}
+  </style>
+</head>
+
+<body>
+
+  <h1>Welcome to PIT</h1>
+  <h2>PIT is a project issue tracker<i class="flaticon-profiles"></i></h2>
+
+  <noscript>
+    <p style="color: red; font-size: 18pt">
+      Javascript is not allowed in your browser. Submit button (log in) will not work. 
+      Please enable Javascript to log in.
+    </p>
+  </noscript>
+
+  <h3 id="version_info"></h3>
+  <h4 id="version_message"></h4>
+  <div id="db_download"> db.json download link: 
+    <a href="https://cse134bhw4-58b4e.firebaseapp.com/json-server/db.json" download="file">db.json</a> </div>
+  <a id="switch_link" href="" class="firebase" onclick="switchVersion()"></a>
+  <br>
+  <br>
+
+  <div id="form">
+    <label for="user">Username or email address </label><br>
+    <input type="text" name="user" id="user"> <br>
+    <label for="password">Password </label><a href="" id="forget" onclick="forget()">Forgot Password?</a> <br>
+    <input type="password" name="password" id="password"> <br> <br>
+
+    <button value="Submit" id="submit_btn" onclick="checkPasswordLocal()">Submit</button>
+  </div>
+
+  <br>
+
+  New to PIT? 
+  <a href="html/sign_up.html" id="signup">Create an account</a>.
+
+  <div id="over" class="over" style="display: none"></div>
+  <div id="loading" class="loading"><img id="loadingImage" src="img/loading.gif"/></div>
+
+  <footer>
+  <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" 
+    title="Memo">Memo</a> | <a href="http://www.freepik.com" 
+    title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"     
+    title="Flaticon">www.flaticon.com</a> is licensed by <a 
+    href="http://creativecommons.org/licenses/by/3.0/"     
+    title="Creative Commons BY 3.0" target="_blank" rel="noopener">CC 3.0 BY</a></div>
+  </footer>
+  
+  <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+  <script src="./script/firebase_init.js"></script>
+  <script src="./script/util.js"></script>
+  <script src="./script/login.js" defer></script>
+  <script>
+  // Check that service workers are registered
+  if ('serviceWorker' in navigator) {
+    // Use the window load event to keep the page load performant
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('../script/../script/sw.js');
+    });
+  }
+  </script>
+</body>
+</html>

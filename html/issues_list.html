@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Issue List</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../css/list.css">
+  <link rel="icon" href="../img/icon.png"/>
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="issue list"/>
+  <link rel="manifest" href="../manifest.json">
+  <style>
+@font-face {
+	font-family: 'GeosansLight';
+	src: url('../font/GeosansLight/GeosansLight.eot');
+    src: local('GeosansLight'), 
+    url('../font/GeosansLight/GeosansLight.woff') format('woff'), 
+    url('../font/GeosansLight.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'CoconLight';
+	src: url('../font/CoconLight/CoconLight.eot');
+    src: local('CoconLight'), url('../font/CoconLight/CoconLight.woff') 
+    format('woff'), url('../font/CoconLight.ttf') format('truetype');
+}
+
+* {
+  box-sizing:border-box;
+}
+
+.openIssue {
+  background: #CCFFCC;
+}
+.closeIssue {
+  background: #FFCCCC;
+}
+.deletedIssue {
+  display: none;
+}
+
+table {
+  width: 100%;
+}
+
+h1{
+  font-size: 36pt;
+  font-family: 'CoconLight';
+}
+
+body {
+  padding: 20px;
+  font-size: 15pt; 
+  font-family: 'GeosansLight'; ;
+}
+
+a{
+  color: black;
+}
+
+input{
+  text-align: left;
+  width: auto;
+  height: auto;
+  font-family: 'GeosansLight';
+  font-size: 15pt;
+}
+
+input[type=submit], input[type=button], button {
+  background: #FFF8DC;
+  color: black;
+  font-family: 'CoconLight';
+  text-align: center;
+  font-size: 15pt;
+  width: auto;
+  height: auto;
+}
+
+form {
+  display:inline;
+  margin: 0px;
+  padding: 0px;
+}
+
+th {
+  background: #66FFFF;
+}
+
+td:nth-of-type(1) {
+  text-align: center;
+}
+
+td:nth-of-type(2) {
+  text-align: center;
+}
+
+td:nth-of-type(3) {
+  text-align: center;
+}
+
+@media only screen and (max-width: 760px)  {
+  table, thead, tbody, td, tr { 
+    display: block; 
+  }
+  
+  th {
+    display: none;
+  }
+
+  tr { 
+    border: 1px solid grey; 
+  }
+
+  td { 
+    border: none;
+    border-bottom: 1px solid grey; 
+    position: relative;
+    padding-left: 3%;
+    padding-right: 3%;
+    text-align: center;
+  }
+
+  td:before { 
+    font-weight:bold;
+  }
+
+  td:nth-of-type(1):before { content: "Issue Id: "; }
+  td:nth-of-type(2):before { content: "Status: "; }
+  td:nth-of-type(3):before { content: "Issue Name: "; }
+  td:nth-of-type(4):before { content: "Issue Type: "; }
+  td:nth-of-type(5):before { content: "Issue Description: "; }
+  td:nth-of-type(6):before { content: "Actions: "; }
+}
+
+@media print {
+
+  * {
+    position: relative;
+  }
+
+  body {
+    margin: 15px;
+    font-family: "Times New Roman", Georgia, Serif;
+  }
+
+  h1 {
+    font-family: "Times New Roman", Georgia, Serif;
+  }
+
+  table, td, th, tr {
+    border: 1px solid grey;
+  }
+
+  .actions, footer {
+    display: none;
+  }
+
+}
+  </style>
+</head>
+
+<body>
+  <h1>Issue List</h1>
+  <h3 id="hello"></h3>
+  <br>
+
+  <noscript>
+    <p>
+      Javascript is not available in your current browser. Open/close and delete functions are limited.
+    </p>
+  </noscript>
+  
+  <form action="../html/add_template.html">
+    <input type="submit" value="Add Issue" >
+    <input type="hidden" name="user" id="user" value="">
+    <input type="checkbox" name="hideChk" id="hideChk" 
+    onclick="checkBoxAction()">
+    <label for="hideChk">Hide closed issues</label>
+    <input type="hidden" name="hideClose" id="hideClose" value="false">
+  </form>
+
+  <br><br>
+
+  <table id="list_table">
+      <tr>
+        <th>Issue Id</th>
+        <th>Status</th>
+        <th>Issue Name</th>
+        <th>Issue Type</th>
+        <th>Issue Description</th>
+        <th class="actions">Action</th>
+      </tr>
+  
+  </table>
+
+  <br>
+
+  
+  <input type="button" value="Log out" onclick="logout()">
+  
+  <footer>
+  <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" 
+    title="Memo">Memo</a> from <a href="https://www.flaticon.com/"     
+    title="Flaticon">www.flaticon.com</a> is licensed by 
+    <a href="http://creativecommons.org/licenses/by/3.0/" rel="noopener"    
+    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+  </footer>
+
+  <script src="../script/util.js" defer></script>
+  <script src="../script/list_actions.js" defer></script>
+
+</body>
+</html>
+
+<script>
+  // Check that service workers are registered
+  if ('serviceWorker' in navigator) {
+    // Use the window load event to keep the page load performant
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('../script/sw.js');
+    });
+  }
+  </script>

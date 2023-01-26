@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title id="title">Issue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/issue.css">
+  <link rel="icon" href="../img/icon.png"/>
+  <meta name="theme-color" content="#000000">
+  <link rel="manifest" href="../manifest.json">
+  <meta name="description" content="Users can see issue details."/>
+  <meta charset="UTF-8">
+</head>
+
+<body>
+  <a id="top"></a>
+  <h1 class="stickyhead" id="name_header"></h1>
+  <h3 id="header"> </h3>
+
+  <hr>
+
+  <div id="content_text">
+    
+  </div>
+
+  <br><hr><br>
+
+  <div id="content_figures">
+    
+  </div>
+
+
+
+  <div class="buttons">
+    <form action="../html/issues_list.html" id="back_btn">
+      <input type="hidden" name="user" id="user" value="">
+      <input type="submit" value="Back">
+    </form>
+    <form action="#top">
+      <input type="hidden" name="user" value="">
+      <input type="submit" value="Top">
+    </form>
+  </div>
+
+  <footer>
+  <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" 
+    title="Memo">Memo</a> from <a href="https://www.flaticon.com/"     
+    title="Flaticon">www.flaticon.com</a> is licensed by 
+    <a href="http://creativecommons.org/licenses/by/3.0/" rel="noopener"  
+    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+  </footer>
+
+  <script src="../script/util.js"></script>
+  <script src="../script/issue_actions.js" defer></script>
+  <script>
+    // Check that service workers are registered
+    if ('serviceWorker' in navigator) {
+      // Use the window load event to keep the page load performant
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('../script/sw.js');
+      });
+    }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+/* Font downloaded from FontsForWeb.com */
+/* Source: http://fontsforweb.com/font/show/?id=79599 */
+/* Source: http://fontsforweb.com/font/show?id=1095 */
+/* Source: http://fontsforweb.com/font/show?id=9785 */
+
+@font-face {
+	font-family: 'GeosansLight';
+	src: url('../font/GeosansLight/GeosansLight.eot');
+    src: local('GeosansLight'), 
+    url('../font/GeosansLight/GeosansLight.woff') format('woff'), 
+    url('../font/GeosansLight.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'CoconLight';
+	src: url('../font/CoconLight/CoconLight.eot');
+    src: local('CoconLight'), url('../font/CoconLight/CoconLight.woff') 
+    format('woff'), url('../font/CoconLight.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'gothic';
+    src: url('../font/gothic/gothic.eot');
+    src: local('gothic'), url('../font/gothic/gothic.woff') format('woff'), 
+  url('../font/gothic.ttf') format('truetype');
+}
+
+body {
+    background-color: powderblue;
+    font-family: 'gothic';    
+    font-size: 15pt; 
+    padding: 0px 100px;
+}
+
+h1{
+    text-align: center;
+    font-size: 36pt;
+    font-family: 'CoconLight';
+}
+
+input{
+    text-align: left;
+    width: auto;
+    height: auto;
+    font-family: 'GeosansLight';
+    font-size: 15pt;
+}
+
+select{
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    height: auto;
+    width: auto;
+    background-color: #5977f6;
+    color: white;
+    font-family: 'CoconLight';
+    text-align: center;
+}
+
+#issuetype{
+    width: 130px;
+}
+
+#issuedes{
+    width: 150px;
+}
+
+textarea{
+    height: 250px;
+    width: 600px;
+    font-family: 'GeosansLight';
+    font-size: 15pt;
+}
+
+input[type=file] {
+    background: #5977f6;
+    color: white;
+    font-family: 'CoconLight';
+    text-align: center;
+    width: 230px;
+}
+
+input[type=submit], input[type=reset], input[type=button] {
+    background: #5977f6;
+    color: white;
+    font-family: 'CoconLight';
+    text-align: center;
+}
+
+
+@media only screen and (max-width: 760px)  {
+    textarea{
+        height: 200px;
+        width: 300px;
+        resize: vertical;
+    }
+    
+    body {
+        text-align: center;
+        margin: 20px;
+        padding: 0px;
+    }
+}

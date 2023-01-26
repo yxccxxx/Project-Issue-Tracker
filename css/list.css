@@ -1,0 +1,151 @@
+/* Font downloaded from FontsForWeb.com */
+/* Source: http://fontsforweb.com/font/show/?id=79599 */
+/* Source: http://fontsforweb.com/font/show?id=1095 */
+/* Source: http://fontsforweb.com/font/show?id=9785 */
+
+@font-face {
+	font-family: 'GeosansLight';
+	src: url('../font/GeosansLight/GeosansLight.eot');
+    src: local('GeosansLight'), 
+    url('../font/GeosansLight/GeosansLight.woff') format('woff'), 
+    url('../font/GeosansLight.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'CoconLight';
+	src: url('../font/CoconLight/CoconLight.eot');
+    src: local('CoconLight'), url('../font/CoconLight/CoconLight.woff') 
+    format('woff'), url('../font/CoconLight.ttf') format('truetype');
+}
+
+* {
+  box-sizing:border-box;
+}
+
+.openIssue {
+  background: #CCFFCC;
+}
+.closeIssue {
+  background: #FFCCCC;
+}
+.deletedIssue {
+  display: none;
+}
+
+table {
+  width: 100%;
+}
+
+h1{
+  font-size: 36pt;
+  font-family: 'CoconLight';
+}
+
+body {
+  padding: 20px;
+  font-size: 15pt; 
+  font-family: 'GeosansLight'; ;
+}
+
+a{
+  color: #5977f6;
+}
+
+input{
+  text-align: left;
+  width: auto;
+  height: auto;
+  font-family: 'GeosansLight';
+  font-size: 15pt;
+}
+
+input[type=submit], input[type=button], button {
+  background: #5977f6;
+  color: white;
+  font-family: 'CoconLight';
+  text-align: center;
+  font-size: 15pt;
+  width: auto;
+  height: auto;
+}
+
+form {
+  display:inline;
+  margin: 0px;
+  padding: 0px;
+}
+
+th {
+  background: #66FFFF;
+}
+
+td:nth-of-type(1) {
+  text-align: center;
+}
+
+td:nth-of-type(2) {
+  text-align: center;
+}
+
+td:nth-of-type(3) {
+  text-align: center;
+}
+
+@media only screen and (max-width: 760px)  {
+  table, thead, tbody, td, tr { 
+    display: block; 
+  }
+  
+  th {
+    display: none;
+  }
+
+  tr { 
+    border: 1px solid grey; 
+  }
+
+  td { 
+    border: none;
+    border-bottom: 1px solid grey; 
+    position: relative;
+    padding-left: 3%;
+    padding-right: 3%;
+    text-align: center;
+  }
+
+  td:before { 
+    font-weight:bold;
+  }
+
+  td:nth-of-type(1):before { content: "Issue Id: "; }
+  td:nth-of-type(2):before { content: "Status: "; }
+  td:nth-of-type(3):before { content: "Issue Name: "; }
+  td:nth-of-type(4):before { content: "Issue Type: "; }
+  td:nth-of-type(5):before { content: "Issue Description: "; }
+  td:nth-of-type(6):before { content: "Actions: "; }
+}
+
+@media print {
+
+  * {
+    position: relative;
+  }
+
+  body {
+    margin: 15px;
+    font-family: "Times New Roman", Georgia, Serif;
+  }
+
+  h1 {
+    font-family: "Times New Roman", Georgia, Serif;
+  }
+
+  table, td, th, tr {
+    border: 1px solid grey;
+  }
+
+  .actions, footer {
+    display: none;
+  }
+
+}

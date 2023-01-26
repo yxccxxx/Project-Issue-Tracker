@@ -1,0 +1,443 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title id="title">Issue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../img/icon.png"/>
+  <meta name="theme-color" content="#000000">
+  <link rel="manifest" href="../manifest.json">
+  <meta name="description" content="This is the issue detail page."/>
+  <meta charset="UTF-8">
+  <style>
+@font-face {
+	font-family: 'GeosansLight';
+	src: url('../font/GeosansLight/GeosansLight.eot');
+    src: local('GeosansLight'), 
+    url('../font/GeosansLight/GeosansLight.woff') format('woff'), 
+    url('../font/GeosansLight.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'CoconLight';
+	src: url('../font/CoconLight/CoconLight.eot');
+    src: local('CoconLight'), url('../font/CoconLight/CoconLight.woff') 
+    format('woff'), url('../font/CoconLight.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'gothic';
+    src: url('../font/gothic/gothic.eot');
+    src: local('gothic'), url('../font/gothic/gothic.woff') format('woff'), 
+  url('../font/gothic.ttf') format('truetype');
+}
+
+h1 {
+    text-align: center;
+    font-size: 40pt;
+    font-family: 'CoconLight';
+    background-color: rgba(135, 204, 236, 0.966);
+}
+
+h3 {
+    font-family: 'CoconLight';
+}
+
+body {
+    background-color: #FFF8DC;
+    padding: 20px;
+    font-family: 'GeosansLight';
+    font-size: 15pt; 
+}
+
+form {
+    display: inline;
+    margin: 0px;
+    padding: 0px;
+}
+
+input{
+    text-align: left;
+    width: auto;
+    height: auto;
+    font-family: 'GeosansLight';
+    font-size: 15pt;
+}
+
+a{
+    color: black;
+}
+
+input[type=submit] {
+    background: #FFF8DC;
+    color: black;
+    font-family: 'CoconLight';
+    text-align: center;
+}
+
+#appleterror{
+    width: 80%;
+    height: 80%;
+}
+
+#marqueeerror{
+    width: 80%;
+    height: 80%;
+}
+
+* {box-sizing: border-box;}
+
+.wrapper > div {
+  border-radius: 5px;
+  padding: 10px;
+  color: #080808;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-gap: 50px;
+  grid-auto-rows: minmax(auto, auto);
+}
+
+.one {
+  grid-column: 1 / 4;
+  grid-row: 1;
+  grid-gap: 10px;
+  background-color: rgba(135, 204, 236, 0.966);
+}
+.two { 
+  grid-column: 4 / 9;
+  grid-row: 1 / 4;
+  grid-gap: 10px;
+}
+.four { 
+    grid-column: 4 / 9;
+    grid-row: 4 / 6;
+    grid-gap: 10px;
+}
+.ten { 
+    grid-column: 1 / 4;
+    grid-row: 2;
+    grid-gap: 10px;
+    background-color: rgba(135, 204, 236, 0.966);
+    text-align: center;
+    font-size: 24pt;
+    font-family: 'CoconLight';
+}
+.eleven { 
+    grid-column: 1 / 4;
+    grid-row: 4;
+    grid-gap: 10px;
+    background-color: rgba(135, 204, 236, 0.966);
+    text-align: center;
+    font-size: 24pt;
+    font-family: 'CoconLight';
+}
+.twelve{
+    grid-column: 4 / 9;
+    grid-row: 6;
+}
+
+.buttons{
+    position: fixed;    
+    bottom: 20px;
+    left: 20px;
+    width: 300px;
+}
+
+p {
+    text-align: center;
+}
+
+img {
+    max-width: 95%;
+    height: auto;
+}
+
+figure {
+    text-align: center;
+}
+
+figurecaption {
+    text-decoration: underline;
+}
+
+#appletcode, #marqueecode {
+    font-size: 12pt;
+}
+
+.flex-container-vertical {
+    display: flex;
+    flex-flow: column;
+}
+
+.flex-container-horizontal {
+    display: flex;
+    flex-flow: row;
+    border-width: 2px;
+    margin: 1%;
+    background-color: #CCFFCC;
+}
+
+.flex-container-images {
+    display: flex;
+    flex-flow: row;
+}
+
+.box1 {
+    margin: 1%;
+    flex: 2;
+}
+
+.box2 {
+    margin: 1%;
+    flex: 3;
+}
+
+.flex-container-images {
+    display: flex;
+    flex-flow: row;
+    flex: 5;
+}
+
+.image-loc:before {
+    content: "on the right";
+}
+
+footer {
+    text-align: center;
+}
+
+@media only screen and (max-width: 1300px) {
+    #imagebox2 {
+        display: flex;
+        flex-flow: column;
+        flex: 2;
+    }
+    #imagebox1 {
+        display: flex;
+        flex-flow: row;
+        flex: 2;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    #imagebox1 {
+        display: flex;
+        flex-flow: column;
+        flex: 1;
+    }
+}
+
+@media only screen and (max-width: 760px) {
+
+    .wrapper > div {
+        border-radius: 5px;
+        padding: 10px;
+        color: #080808;
+    }
+    .wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        grid-gap: 50px;
+        grid-auto-rows: minmax(auto, auto);
+    }
+    .one {
+        grid-column: 1;
+        grid-row: 1;
+        grid-gap: 10px;
+        background-color: rgba(135, 204, 236, 0.966);
+    }
+    .two { 
+        grid-column: 1;
+        grid-row: 3;
+        grid-gap: 10px;
+    }
+    .four { 
+        grid-column: 1;
+        grid-row: 5;
+        grid-gap: 10px;
+      }
+    .ten { 
+        grid-column: 1;
+        grid-row: 2;
+        grid-gap: 10px;
+        background-color: rgba(135, 204, 236, 0.966);
+        text-align: center;
+        font-size: 24pt;
+        font-family: 'CoconLight';
+    }
+    .eleven { 
+        grid-column: 1;
+        grid-row: 4;
+        grid-gap: 10px;
+        background-color: rgba(135, 204, 236, 0.966);
+        text-align: center;
+        font-size: 24pt;
+        font-family: 'CoconLight';
+    }
+    .twelve{
+        grid-column: 1;
+        grid-row: 6;
+    }
+
+    .flex-container-horizontal {
+        display: flex;
+        flex-flow: column;
+    }
+
+    .image-loc:before {
+        content: "below";
+    }
+}
+
+
+@media print {
+
+    * {
+        position: relative;
+    }
+
+    body {
+        margin: 15px;
+        font-family: "Times New Roman", Georgia, Serif;
+    }
+    .wrapper{
+        display: block;
+    }
+    figure, p, code {
+        page-break-inside: avoid;
+        font-family: "Times New Roman", Georgia, Serif;
+    }
+
+    h1 {
+        font-size: 20pt;
+        font-family: "Times New Roman", Georgia, Serif;
+    }
+
+    h3 {
+        font-size: 14pt;
+        font-family: "Times New Roman", Georgia, Serif;
+    }
+
+    p, code, figcaption, div {
+        font-size: 12pt;
+    }
+    .one {
+        background-color: rgba(135, 204, 236, 0.966);
+    }
+    .ten { 
+
+        background-color: rgba(135, 204, 236, 0.966);
+        text-align: center;
+        font-size: 24pt;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    .eleven { 
+        background-color: rgba(135, 204, 236, 0.966);
+        text-align: center;
+        font-size: 24pt;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    .flex-container-horizontal {
+        display: flex;
+        flex-flow: column;
+    }
+
+    .image-loc:before {
+        content: "below";
+    }
+
+    .buttons {
+        display: none;
+    }
+
+    footer {
+        display: none;
+    }
+}
+
+.over {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #E0E0E0;
+    opacity:0.5;
+    display: none;
+}
+
+.loading {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    width: 20%;
+    height: 20%;
+    z-index: 999;
+    text-align:center;
+    display: none;
+}
+
+  </style>
+</head>
+
+<body>
+  <a id="top"></a>
+  <h1 class="stickyhead" id="name_header">header1</h1>
+  <h3 id="header">header3</h3>
+
+  <hr>
+
+  <div id="content_text">
+    
+  </div>
+
+  <br><hr><br>
+
+  <div id="content_figures">
+    
+  </div>
+
+
+
+  <div class="buttons">
+    <form action="../html/issues_list_firebase.html" id="back_btn">
+      <input type="submit" value="Back">
+    </form>
+    <form action="#top">
+      <input type="hidden" name="id" id="top_hidden" value="id">
+      <input type="submit" value="Top">
+    </form>
+  </div>
+
+  <div id="over" class="over"></div>
+  <div id="loading" class="loading"><img src="../img/loading.gif" alt="loading"/></div>
+
+  <footer>
+  <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" 
+    title="Memo">Memo</a> from <a href="https://www.flaticon.com/"     
+    title="Flaticon">www.flaticon.com</a> is licensed by 
+    <a href="http://creativecommons.org/licenses/by/3.0/"     
+    title="Creative Commons BY 3.0" target="_blank" rel="noopener">CC 3.0 BY</a></div>
+  </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+  <script src="../script/firebase_init.js"></script>
+  <script src="../script/util.js"></script>
+  <script src="../script/issue_firebase.js"></script>
+  <script>
+  // Check that service workers are registered
+  if ('serviceWorker' in navigator) {
+    // Use the window load event to keep the page load performant
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('../script/sw.js');
+    });
+  }
+  </script>
+
+</body>
+</html>
+

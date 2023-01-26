@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../img/icon.png"/>
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Users can register firebase account."/>
+  <link rel="manifest" href="../manifest.json">
+  <title>Sign up</title>
+  <style>
+@font-face {
+	font-family: 'GeosansLight';
+	src: url('../font/GeosansLight/GeosansLight.eot');
+    src: local('GeosansLight'), 
+    url('../font/GeosansLight/GeosansLight.woff') format('woff'), 
+    url('../font/GeosansLight.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'CoconLight';
+	src: url('../font/CoconLight/CoconLight.eot');
+    src: local('CoconLight'), url('../font/CoconLight/CoconLight.woff') 
+    format('woff'), url('../font/CoconLight.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'gothic';
+    src: url('../font/gothic/gothic.eot');
+    src: local('gothic'), url('../font/gothic/gothic.woff') format('woff'), 
+  url('../font/gothic.ttf') format('truetype');
+}
+
+body {
+    background-color: powderblue;
+    font-family: 'GeosansLight';    
+    font-size: 15pt; 
+    padding: 30px 100px;
+    text-align: center;
+    position: static;
+}
+
+h1{
+    font-size: 36pt;
+    font-family: 'CoconLight';
+    text-align: center;
+}
+
+form{
+    display: inline;
+    margin: 0px;
+    padding: 0px;
+}
+
+input{
+    text-align: left;
+    width: auto;
+    height: auto;
+    font-family: 'GeosansLight';
+    font-size: 15pt;
+}
+
+input[type=submit], input[type=button], button {
+    background: #FFF8DC;
+    color: black;
+    font-family: 'CoconLight';
+    text-align: center;
+    font-size: 15pt;
+    width: auto;
+    height: auto;
+}
+
+#switch_btn {
+    background-color: Transparent;
+    border-color: Transparent;
+    border-style: None;
+    color: #F18BFC;
+}
+
+a{
+    color: black;
+}
+
+@media only screen and (max-width: 760px)  {
+    body {
+        text-align: center;
+        margin: 20px;
+        padding: 0px;
+    }
+}
+
+.over {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #E0E0E0;
+    opacity:0.5;
+    display: none;
+}
+
+.loading {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    width: 20%;
+    height: 20%;
+    z-index: 999;
+    text-align:center;
+    display: none;
+}
+
+  </style>
+</head>
+
+<body>
+
+  <h1>PIT Sign Up</h1>
+  
+
+  <noscript>
+    <p style="color: red; font-size: 18pt">
+      Javascript is not allowed in your browser. Submit button (sign up) will not work. 
+      Please enable Javascript to sign up.
+    </p>
+  </noscript>
+  
+  <h2>Fill in the form and register your account!</h2>
+
+  <div>
+    <label for="userid">Username or email address </label><br>
+    <input type="text" name="userid" id="userid"> <br>
+    <label for="password">Password </label><br>
+    <input type="password" name="password" id="password"> <br> <br>
+    <button name="signup" id="signup" onclick="signup()">Sign up</button>
+    <button name="cancel" id="cancel" 
+    onclick="window.location.href=index.html">
+    Cancel</button><br><br>
+  </div>
+
+  <div id="over" class="over"></div>
+  <div id="loading" class="loading"><img src="../img/loading.gif" alt="loading" /></div>
+
+  <footer>
+  <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" 
+    title="Memo">Memo</a> from <a href="https://www.flaticon.com/"     
+    title="Flaticon">www.flaticon.com</a> is licensed by 
+    <a href="http://creativecommons.org/licenses/by/3.0/" rel="noopener"  
+    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+  </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+  <script src="../script/util.js"></script>
+  <script src="../script/firebase_init.js"></script>
+  <script>
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in.
+        var callback = function (error) {
+          if (error) {
+            alert("failed to create this account");
+          } else {
+            finishLoading();
+            window.location.href = "../html/issues_list_firebase.html";
+          }
+        }
+
+        var userObj = {
+          "email": user.email,
+          "issues": {
+            "num": 0
+          }
+        };
+
+        firebase.database().ref('users/' + user.uid).set(userObj, callback);
+      } 
+    });
+
+    function signup() {
+
+      beginLoading();
+
+      var email = document.getElementById("userid").value;
+      var password = document.getElementById("password").value;
+      
+      firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+        // Handle Errors here.
+        if (error) {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          console.log("sign up error " + errorCode);
+          alert("Sign Up Failed: " + errorMessage);
+          finishLoading();
+        }
+      });
+    }
+  </script>
+  <script>
+    // Check that service workers are registered
+    if ('serviceWorker' in navigator) {
+      // Use the window load event to keep the page load performant
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('../script/sw.js');
+      });
+    }
+    </script>
+
+</body>
+</html>
+
+
+

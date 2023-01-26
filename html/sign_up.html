@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/login.css">
+  <link rel="icon" href="../img/icon.png"/>
+  <meta name="theme-color" content="#000000">
+  <link rel="manifest" href="../manifest.json">
+  <meta name="description" content="Users can sign up their account locally."/>
+  <title>Sign up</title>
+</head>
+
+<body>
+
+  <noscript>
+    <p style="color: red; font-size: 18pt">
+      Javascript is not allowed in your browser. Submit button (sign up) will not work. 
+      Please enable Javascript to sign up.
+    </p>
+  </noscript>
+
+  <h1>PIT Sign Up</h1>
+  
+  <h2>Fill in the form and register your account!</h2>
+
+  <div>
+    <label for="userid">Username or email address</label> <br>
+    <input type="text" name="userid" id="userid"> <br>
+    <label for="password">Password </label><br>
+    <input type="password" name="password" id="password"> <br> <br>
+    <button name="signup" id="signup" onclick="signup()">Sign up</button>
+    <button name="cancel" id="cancel" 
+    onclick="window.location.href='index.html'">
+    Cancel</button><br><br>
+  </div>
+
+  <footer>
+  <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" 
+    title="Memo">Memo</a> from <a href="https://www.flaticon.com/"     
+    title="Flaticon">www.flaticon.com</a> is licensed by 
+    <a href="http://creativecommons.org/licenses/by/3.0/" rel="noopener"   
+    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+  </footer>
+
+  <script src="../script/util.js"></script>
+  <script src="../script/user_permission.js"></script>
+
+</body>
+</html>
+
+<script>
+  // Check that service workers are registered
+  if ('serviceWorker' in navigator) {
+    // Use the window load event to keep the page load performant
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('../script/sw.js');
+    });
+  }
+</script>

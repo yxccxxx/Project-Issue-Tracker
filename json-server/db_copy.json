@@ -1,0 +1,99 @@
+{ 
+
+
+  "total_issue_num": {
+    "num": 4
+  },
+
+
+  "users": [
+    {
+      "id": "test",
+      "password": "123456"
+    },
+    {
+      "id": "test2",
+      "password": "2333"
+    }
+  ],
+
+  "issues": [
+    {
+      "id": 1,
+      "user": "test",
+      "status": "open",
+      "name": "Old Tags",
+      "type": "applet and marquee tags",
+      "description": "applet and marquee tags are obsoleted.",
+      "content": "&lt;applet&gt;\n The &lt;applet&gt; tag is an obsoleted tag. It will not work in current browsers. Also, it will lead to some errors during the validation check. Need to check this issue or use other method to substitute.\n Since the &lt;applet&gt; tag is obsoleted and not supported anymore, the actual implementation is not applied in this page. Below is an example of applet usage.\n &lt;applet code=\"TestApplet.class\" align=\"left\" archive=\"TestApplet.zip\" width=\"320\" height=\"120\" alt=\"an applet example\"&gt; A string \"Test Applet\" should show up. &lt;/applet&gt;\n &lt;marquee&gt; \n &lt;marquee&gt; is also an obsoleted tag. Unlike the applet example above, the &lt;marquee&gt; element still works in current browsers. But it will still lead to some errors and warnings during the validation check. Need to check this issue or use other method to substitute. \n Since the &lt;marquee&gt; tag will lead to errors during validation check, the actual implementation is not applied.",
+      "attachments": [
+        {
+          "url": "../img/marquee_error.jpg",
+          "description": "marquee tag error messages"
+        },
+        {
+          "url": "../img/applet_error.png",
+          "description": "applet tag error messages"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "user": "test",
+      "status": "open",
+      "name": "Internal Server Error",
+      "type": "server",
+      "description": "When the submitted data is not in the correct format, an internal server error occurs.",
+      "content": "We are testing a search API for certain products. There two inputs: included ingredients, and excluded ingredients. When users submit their input, the API should return a list of products that contain the included ingredients and do not contain the excluded ingredients.\n The input should be two lists of strings in json format. However, in the current version, the server does not check validation for users' input. When users enter an invalid format of input, an internal error happens.\n Therefore we need to add validation check in the server side. When a user enters an invalid input, we should catch the error and return a message to the user to notify the correct format.",
+      "attachments": [
+
+        {
+          "url": "../img/success.gif",
+          "description": "successful API call"
+        },
+        {
+          "url": "../img/error.gif",
+          "description": "unsuccessful API call"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "user": "test2",
+      "status": "open",
+      "name": "Unsupported Images",
+      "type": "&lt;img&gt; tag",
+      "description": "Some image types are not supported in all broswers.",
+      "content": "Except for the conventional image formats such as JPG, PNG, GIF etc., there are other image formats that are applied in websites. For instance, SVG(Scalable Vector Graphics) is an XML-based image format that is suitable for images with simple shapes and colors.\n Two sample images (JPG & SVG) are shown below.\n Users could hardly tell the difference between them but the SVG image is much smaller. The JPG image is 40.4kb in size, while the SVG image is only 3.48kb in size. Therefore we could convert some images into SVG format if possible.\n However, some image formats are not supported in all broswers. WebP is an image format developed by Google. According to Google, WebP lossless images are 26% smaller in size compared to PNGs. WebP lossy images are 25-34% smaller than comparable JPEG images at equivalent SSIM quality index (source:https://developers.google.com/speed/webp/).works in some browsers such as Chrome and Opera.\n Two sample images (JPG & SVG) are shown below (source: https://developers.google.com/speed/webp/gallery1). The JPG image is 43.84kb in size and the WebP image is 29.61kb in size. \n Since WebP is not supported in some browsers, we need to figure out a way to get users' broswer info. If the client browser is Safari, Internet Explorer, Firefox and other ones that do not support WebP, we need to replace the WebP image with image of some other format.",
+      "attachments": [
+        {
+          "url": "../img/jpg_emoji.jpg",
+          "description": "A sample jpg image"
+        },
+        {
+          "url": "../img/svg_emoji.svg",
+          "description": "A sample svg image"
+        },
+        {
+          "url": "../img/webp.jpg",
+          "description": "A sample image in JPG format"
+        },
+        {
+          "url": "../img/webp.webp",
+          "description": "A sample image in WebP format"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "user": "test2",
+      "status": "open",
+      "name": "Bad performance",
+      "type": "Website performance",
+      "description": "index.html needs an unexpected long time to load.",
+      "content": " When opening the home page, users always need a long time. The page will continue to load for several seconds. This is not an expected behavior for web developers. \n There are several potential reasons for this issue. First, index.html  contains several large images, and all these images are in PNG format. This means that images maybe too large, so the browser needs more time to load.\n Second, index.html makes use of web plugins, such as Flash. Flash is usually used to display Flash media on web pages. It can also be used for animations, videos and games. The webpage may use these sources and makes the page look better. But the plugins needs time to load, giving the webpage a bad performance.\n Third, possibly it is slow due to the network, or a slow web hosting service. users will see the website because the browser notifies the  server through the network, asking the server to send data for a specific website. If the server or the network does not work good, it may cause a bad performance for the website.\n Therefore, there are potential solutions to this performance issue.  Developers can try to use JPEG format for images rather than PNG images in index.html. Since it is a log in page, it does not require many images to make the page vivid. Also, if large size plugins are used, try not to use them or choose a substitute with a smaller size. As for the network and server issue, developers can try to make a simple website, put onto the server, and see whether that simple website has a good performance or not. If it has a good performance, network and server are not potential reasons for the bad performance. If it still needs a long time to load, it might be the reason.",
+      "attachments": [
+      ]
+    }
+  ]
+}

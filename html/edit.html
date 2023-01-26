@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/edit.css">
+  <link rel="icon" href="../img/icon.png"/>
+  <meta name="theme-color" content="#000000">
+  <link rel="manifest" href="../manifest.json">
+  <meta name="description" content="Users can edit issue details locally."/>
+  <title>Edit Issue</title>
+</head>
+
+<body>
+
+  <h1>Edit Issue</h1>
+
+  <noscript>
+    <p style="color: red; font-size: 18pt">
+      Javascript is not allowed in your browser. Submit button (edit issue) will not work. 
+      Please enable Javascript to edit issue.
+    </p>
+  </noscript>
+
+  <form action="../html/issues_list.html">
+    <input type="hidden" name="user" id="user">
+    <input type="submit" value="Back">
+  </form>
+  <input type="hidden" name="id" id="id">
+
+  <br>
+
+
+  <div id="input_form">
+    <label for="title">Issue Name: </label>
+    <input type="text" id="title"><br><br>
+    <label for="type">Issue Type: </label>
+    <select name="type" id="type">
+      <option value="Website performance">Website performance</option>
+      <option value="Unsupported Tags">Unsupported Tags</option>
+      <option value="Server">Server</option>
+      <option value="Images">Images</option>
+      <option value="Url Connection">Url Connection</option>
+      <option value="UI">UI</option>
+      <option value="Browser Compatibility">Browser Compatibility</option>
+      <option value="Scrolling Issue">Scrolling Issue</option>
+      <option value="Color selection">Color selection</option>
+      <option value="Other">Other</option>
+    </select>
+    <br><br>
+    <label for="description">Issue Description: </label><br>
+    <input type="text" name="description" id="description"
+    style="width: 80%" value=""><br><br>
+    <label for="content">Content: </label><br>
+    <textarea style="width: 80%" value="" id="content" ></textarea><br><br>
+    <label for="priority">Issue Priority: low</label>
+    <input type="range" min="1" max="10" value="5" name="priority" id="priority">
+    <label for="high">high </label><br> <br>
+    <label for="attachment">Issue Attachment </label><br>
+    <label for="attach_url">Url: </label><br>
+    <input type="text" name="attach_url" id="attach_url" style="width: 75%"><br>
+    <label for="attach_description">Description: </label><br> 
+    <input type="text" name="attach_description" id="attach_description" style="width: 75%">
+     <br><br>
+    <input type="submit" value="Submit" onclick="edit()"> 
+    <input type="reset" onclick="loadOriginalIssue()" value="Reset">
+  </div>
+
+  <br> <br>
+
+  <footer>
+  <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" 
+    title="Memo">Memo</a> from <a href="https://www.flaticon.com/"     
+    title="Flaticon">www.flaticon.com</a> is licensed by 
+    <a href="http://creativecommons.org/licenses/by/3.0/" rel="noopener"   
+    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+  </footer>
+
+  <script src="../script/util.js"></script>
+  <script src="../script/edit_local.js" defer></script>
+
+</body>
+</html>

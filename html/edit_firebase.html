@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="theme-color" content="#000000">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Users can edit issue."/>
+  <link rel="icon" href="../img/icon.png"/>
+  <meta name="theme-color" content="#000000">
+  <link rel="manifest" href="../manifest.json">
+  <title>Edit Issue</title>
+  <style>
+@font-face {
+	font-family: 'GeosansLight';
+	src: url('../font/GeosansLight/GeosansLight.eot');
+    src: local('GeosansLight'), 
+    url('../font/GeosansLight/GeosansLight.woff') format('woff'), 
+    url('../font/GeosansLight.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'CoconLight';
+	src: url('../font/CoconLight/CoconLight.eot');
+    src: local('CoconLight'), url('../font/CoconLight/CoconLight.woff') 
+    format('woff'), url('../font/CoconLight.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'gothic';
+    src: url('../font/gothic/gothic.eot');
+    src: local('gothic'), url('../font/gothic/gothic.woff') format('woff'), 
+  url('../font/gothic.ttf') format('truetype');
+}
+
+body {
+    background-color:  #FFF8DC;
+    font-family: 'gothic';    
+    font-size: 15pt; 
+    padding: 0px 100px;
+    position: relative;
+}
+
+a{
+  color: black;
+}
+
+h1{
+    text-align: center;
+    font-size: 36pt;
+    font-family: 'CoconLight';
+}
+
+input{
+    text-align: left;
+    width: auto;
+    height: auto;
+    font-family: 'GeosansLight';
+    font-size: 15pt;
+}
+
+select{
+    background: transparent;
+    border: none;
+    font-size: 15pt;
+    height: auto;
+    width: auto;
+    background-color:  #FFF8DC;
+    color: black;
+    font-family: 'CoconLight';
+    text-align: center;
+}
+
+#issuetype{
+    width: 130px;
+}
+
+#issuedes{
+    width: 150px;
+}
+
+textarea{
+    height: 250px;
+    width: 600px;
+    font-family: 'GeosansLight';
+    font-size: 15pt;
+}
+
+input[type=file] {
+    background:  #FFF8DC;
+    color: black;
+    font-family: 'CoconLight';
+    text-align: center;
+    width: 230px;
+}
+
+input[type=submit] {
+    background:  #FFF8DC;
+    color: black;
+    font-family: 'CoconLight';
+    text-align: center;
+}
+
+input[type=reset] {
+    background:  #FFF8DC;
+    color: black;
+    font-family: 'CoconLight';
+    text-align: center;
+}
+
+@media only screen and (max-width: 760px)  {
+    textarea{
+        height: 200px;
+        width: 300px;
+        resize: vertical;
+    }
+    
+    body {
+        text-align: center;
+        margin: 20px;
+        padding: 0px;
+    }
+}
+
+.over {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity:0.5;
+    display: none;
+}
+
+.loading {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    width: 20%;
+    height: 20%;
+    z-index: 999;
+    text-align:center;
+    display: none;
+}
+  </style>
+</head>
+
+<body>
+
+  <h1>Edit Issue</h1>
+
+  <form action="../html/issues_list_firebase.html">
+    <input type="submit" value="Back">
+  </form>
+  <input type="hidden" name="id" id="id">
+
+  <br>
+
+
+  <div id="input_form">
+    <label for="name">Name: </label>
+    <input type="text" id="name" ><br><br>
+    <label for="type">Issue Type: </label>
+    <select name="type" id="type">
+      <option value="Website performance">Website performance</option>
+      <option value="Unsupported Tags">Unsupported Tags</option>
+      <option value="Server">Server</option>
+      <option value="Images">Images</option>
+      <option value="Url Connection">Url Connection</option>
+      <option value="UI">UI</option>
+      <option value="Browser Compatibility">Browser Compatibility</option>
+      <option value="Scrolling Issue">Scrolling Issue</option>
+      <option value="Color selection">Color selection</option>
+      <option value="Other">Other</option>
+    </select>
+    <br><br>
+    <label for="description">Issue Description: </label><br>
+    <input type="text" name="description" id="description"
+    style="width: 80%" value=""><br><br>
+    <label for="content">Content: </label><br>
+    <textarea style="width: 80%" id="content" ></textarea><br><br>
+    <label for="priority">Issue Priority: low</label>
+    <input type="range" min="1" max="10" value="5" name="priority" id="priority">
+    high <br> <br>
+    <label for="attachment">Issue Attachment </label><br>
+    <input type="file" name="attachment" id="attachment" 
+    accept="image/jpeg, image/png, image/webp, image/svg+xml, image/gif, image/bmp" 
+    multiple> <br> <br>
+    <input type="submit" value="Submit" onclick="edit()"> 
+    <input type="reset" onclick="loadOriginalIssue()" value="Reset">
+  </div>
+
+  <div id="over" class="over"></div>
+  <div id="loading" class="loading"><img src="../img/loading.gif" alt="loading"/></div>
+
+  <footer>
+  <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" 
+    title="Memo">Memo</a> from <a href="https://www.flaticon.com/"     
+    title="Flaticon">www.flaticon.com</a> is licensed by 
+    <a href="http://creativecommons.org/licenses/by/3.0/" rel="noopener"   
+    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+  </footer>
+
+
+  <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+  <script src="../script/firebase_init.js"></script>
+  <script src="../script/util.js"></script>
+  <script src="../script/edit_firebase.js"></script>
+  <script>
+    // Check that service workers are registered
+    if ('serviceWorker' in navigator) {
+      // Use the window load event to keep the page load performant
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('../script/../script/sw.js');
+      });
+    }
+  </script>
+
+</body>
+</html>
+
